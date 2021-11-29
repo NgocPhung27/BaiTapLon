@@ -27,7 +27,7 @@ namespace QuanLyDiem.Controllers
             else if (CheckSession() == 2)
 
             {
-                return RedirectToAction("Index", "HocSinh", new { Area = "HSClient" });
+                return RedirectToAction("Index", "HomeHocSinh", new { Area = "HSClient" });
 
             }
             ViewBag.ReturnUrl = returnUrl;
@@ -109,7 +109,7 @@ namespace QuanLyDiem.Controllers
                 }
                 else if (CheckSession() == 2)
                 {
-                    return RedirectToAction("Index", "HocSinh", new { Area = "HSClient" });
+                    return RedirectToAction("Index", "HomeHocSinh", new { Area = "HSClient" });
                 }
             }
             if (Url.IsLocalUrl(returnUrl))

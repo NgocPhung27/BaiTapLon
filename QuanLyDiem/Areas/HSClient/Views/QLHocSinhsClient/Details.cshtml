@@ -1,0 +1,75 @@
+﻿@model QuanLyDiem.Models.QLHocSinh
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/HSClient/Views/_LayoutClient.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>QLHocSinh</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QLLop.TenLop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QLLop.TenLop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenHS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenHS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnhHS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnhHS)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaHS }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

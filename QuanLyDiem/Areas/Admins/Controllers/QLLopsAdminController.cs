@@ -8,126 +8,119 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyDiem.Models;
 
-namespace QuanLyDiem.Controllers
-{ 
-    public class QLGiaoViensController : Controller
+namespace QuanLyDiem.Areas.Admins.Controllers
+{
+    public class QLLopsController : Controller
     {
         private QLDHSDbContext db = new QLDHSDbContext();
         AutoGenerateKey aukey = new AutoGenerateKey();
 
-        // GET: QLGiaoViens
+        // GET: QLLops
         public ActionResult Index()
         {
-            var giaoViens = db.GiaoViens.Include(q => q.QLMonHoc);
-            return View(giaoViens.ToList());
+            return View(db.Lops.ToList());
         }
 
-        // GET: QLGiaoViens/Details/5
+        // GET: QLLops/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            QLGiaoVien qLGiaoVien = db.GiaoViens.Find(id);
-            if (qLGiaoVien == null)
+            QLLop qLLop = db.Lops.Find(id);
+            if (qLLop == null)
             {
                 return HttpNotFound();
             }
-            return View(qLGiaoVien);
+            return View(qLLop);
         }
 
-        // GET: QLGiaoViens/Create
+        // GET: QLLops/Create
         public ActionResult Create()
         {
-            ViewBag.MaMH = new SelectList(db.MonHocs, "MaMH", "TenMH");
             return View();
         }
 
-        // POST: QLGiaoViens/Create
+        // POST: QLLops/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaGV,MaMH,TenGV,GioiTinh,NgaySinh,SoDienThoai,DiaChi,AnhGV")] QLGiaoVien gv)
+        public ActionResult Create([Bind(Include = "MaLop,TenLop,NienKhoa,SiSo,GhiChu")] QLLop lop)
         {
-            var countGV = db.GiaoViens.Count();
-            if (countGV == 0)
+            var countlop = db.Lops.Count();
+            if (countlop == 0)
             {
-                gv.MaGV = "GV001";
+                lop.MaLop = "L001";
             }
             else
             {
                 //Lấy giá trị MaHS moi nhat
-                var MaGV = db.GiaoViens.ToList().OrderByDescending(m => m.MaGV).FirstOrDefault().MaGV;
+                var Malop = db.Lops.ToList().OrderByDescending(m => m.MaLop).FirstOrDefault().MaLop;
                 //sinh MaHS tự dộng
-                gv.MaGV = aukey.GenerateKey(MaGV);
+                lop.MaLop = aukey.GenerateKey(Malop);
             }
             //luu thông tin vao database
-            db.GiaoViens.Add(gv);
+            db.Lops.Add(lop);
             db.SaveChanges();
-
             return RedirectToAction("Index");
 
-            ViewBag.MaMH = new SelectList(db.MonHocs, "MaMH", "TenMH", gv.MaMH);
-            return View(gv);
         }
 
-        // GET: QLGiaoViens/Edit/5
+        // GET: Admins/QLLopsAdmin/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            QLGiaoVien qLGiaoVien = db.GiaoViens.Find(id);
-            if (qLGiaoVien == null)
+            QLLop qLLop = db.Lops.Find(id);
+            if (qLLop == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaMH = new SelectList(db.MonHocs, "MaMH", "TenMH", qLGiaoVien.MaMH);
-            return View(qLGiaoVien);
+            return View(qLLop);
         }
 
-        // POST: QLGiaoViens/Edit/5
+        // POST: Admins/QLLopsAdmin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaGV,MaMH,TenGV,GioiTinh,NgaySinh,SoDienThoai,DiaChi,AnhGV")] QLGiaoVien qLGiaoVien)
+        public ActionResult Edit([Bind(Include = "MaLop,TenLop,NienKhoa,SiSo,GhiChu")] QLLop qLLop)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(qLGiaoVien).State = EntityState.Modified;
+                db.Entry(qLLop).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaMH = new SelectList(db.MonHocs, "MaMH", "TenMH", qLGiaoVien.MaMH);
-            return View(qLGiaoVien);
+            return View(qLLop);
         }
 
-        // GET: QLGiaoViens/Delete/5
+        // GET: Admins/QLLopsAdmin/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            QLGiaoVien qLGiaoVien = db.GiaoViens.Find(id);
-            if (qLGiaoVien == null)
+            QLLop qLLop = db.Lops.Find(id);
+            if (qLLop == null)
             {
                 return HttpNotFound();
             }
-            return View(qLGiaoVien);
+            return View(qLLop);
         }
 
-        // POST: QLGiaoViens/Delete/5
+        // POST: Admins/QLLopsAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            QLGiaoVien qLGiaoVien = db.GiaoViens.Find(id);
-            db.GiaoViens.Remove(qLGiaoVien);
+            QLLop qLLop = db.Lops.Find(id);
+            db.Lops.Remove(qLLop);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

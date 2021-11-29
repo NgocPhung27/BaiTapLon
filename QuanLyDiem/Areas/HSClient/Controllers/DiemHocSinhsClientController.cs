@@ -8,126 +8,126 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyDiem.Models;
 
-namespace QuanLyDiem.Controllers
-{ 
-    public class QLGiaoViensController : Controller
+namespace QuanLyDiem.Areas.HSClient.Controllers
+{
+    public class DiemHocSinhsClientController : Controller
     {
         private QLDHSDbContext db = new QLDHSDbContext();
         AutoGenerateKey aukey = new AutoGenerateKey();
 
-        // GET: QLGiaoViens
+        // GET: DiemHocSinhs
         public ActionResult Index()
         {
-            var giaoViens = db.GiaoViens.Include(q => q.QLMonHoc);
-            return View(giaoViens.ToList());
+            return View(db.DiemHocSinhs.ToList());
         }
 
-        // GET: QLGiaoViens/Details/5
+        // GET: DiemHocSinhs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            QLGiaoVien qLGiaoVien = db.GiaoViens.Find(id);
-            if (qLGiaoVien == null)
+            DiemHocSinh diemHocSinh = db.DiemHocSinhs.Find(id);
+            if (diemHocSinh == null)
             {
                 return HttpNotFound();
             }
-            return View(qLGiaoVien);
+            return View(diemHocSinh);
         }
 
-        // GET: QLGiaoViens/Create
+        // GET: DiemHocSinhs/Create
         public ActionResult Create()
         {
+            ViewBag.MaLop = new SelectList(db.Lops, "MaLop", "TenLop");
             ViewBag.MaMH = new SelectList(db.MonHocs, "MaMH", "TenMH");
             return View();
         }
 
-        // POST: QLGiaoViens/Create
+        // POST: DiemHocSinhs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaGV,MaMH,TenGV,GioiTinh,NgaySinh,SoDienThoai,DiaChi,AnhGV")] QLGiaoVien gv)
+        public ActionResult Create([Bind(Include = "MaHS,TenHS,GioiTinh,NgaySinh,SoDienThoai,DiaChi,AnhHS,MaLop,MaMH,DiemMieng,Diem15Phut,Diem1Tiet,DiemHK,DiemTBHK,GhiChu")] DiemHocSinh dhs)
         {
-            var countGV = db.GiaoViens.Count();
-            if (countGV == 0)
+            var countHS = db.HocSinhs.Count();
+            if (countHS == 0)
             {
-                gv.MaGV = "GV001";
+                dhs.MaHS = "HS001";
             }
             else
             {
                 //Lấy giá trị MaHS moi nhat
-                var MaGV = db.GiaoViens.ToList().OrderByDescending(m => m.MaGV).FirstOrDefault().MaGV;
+                var MaHS = db.HocSinhs.ToList().OrderByDescending(m => m.MaHS).FirstOrDefault().MaHS;
                 //sinh MaHS tự dộng
-                gv.MaGV = aukey.GenerateKey(MaGV);
+                dhs.MaHS = aukey.GenerateKey(MaHS);
             }
             //luu thông tin vao database
-            db.GiaoViens.Add(gv);
+            db.HocSinhs.Add(dhs);
             db.SaveChanges();
-
             return RedirectToAction("Index");
 
-            ViewBag.MaMH = new SelectList(db.MonHocs, "MaMH", "TenMH", gv.MaMH);
-            return View(gv);
+            ViewBag.MaLop = new SelectList(db.Lops, "MaLop", "TenLop", dhs.MaLop);
+            ViewBag.MaMH = new SelectList(db.MonHocs, "MaMH", "TenMH", dhs.MaMH);
+            return View(dhs);
         }
 
-        // GET: QLGiaoViens/Edit/5
+        // GET: HSClient/DiemHocSinhsClient/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            QLGiaoVien qLGiaoVien = db.GiaoViens.Find(id);
-            if (qLGiaoVien == null)
+            DiemHocSinh diemHocSinh = db.DiemHocSinhs.Find(id);
+            if (diemHocSinh == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaMH = new SelectList(db.MonHocs, "MaMH", "TenMH", qLGiaoVien.MaMH);
-            return View(qLGiaoVien);
+            ViewBag.MaLop = new SelectList(db.Lops, "MaLop", "TenLop", diemHocSinh.MaLop);
+            return View(diemHocSinh);
         }
 
-        // POST: QLGiaoViens/Edit/5
+        // POST: HSClient/DiemHocSinhsClient/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaGV,MaMH,TenGV,GioiTinh,NgaySinh,SoDienThoai,DiaChi,AnhGV")] QLGiaoVien qLGiaoVien)
+        public ActionResult Edit([Bind(Include = "MaHS,TenHS,GioiTinh,NgaySinh,SoDienThoai,DiaChi,AnhHS,MaLop,MaMH,DiemMieng,Diem15Phut,Diem1Tiet,DiemHK,DiemTBHK,GhiChu")] DiemHocSinh diemHocSinh)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(qLGiaoVien).State = EntityState.Modified;
+                db.Entry(diemHocSinh).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaMH = new SelectList(db.MonHocs, "MaMH", "TenMH", qLGiaoVien.MaMH);
-            return View(qLGiaoVien);
+            ViewBag.MaLop = new SelectList(db.Lops, "MaLop", "TenLop", diemHocSinh.MaLop);
+            return View(diemHocSinh);
         }
 
-        // GET: QLGiaoViens/Delete/5
+        // GET: HSClient/DiemHocSinhsClient/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            QLGiaoVien qLGiaoVien = db.GiaoViens.Find(id);
-            if (qLGiaoVien == null)
+            DiemHocSinh diemHocSinh = db.DiemHocSinhs.Find(id);
+            if (diemHocSinh == null)
             {
                 return HttpNotFound();
             }
-            return View(qLGiaoVien);
+            return View(diemHocSinh);
         }
 
-        // POST: QLGiaoViens/Delete/5
+        // POST: HSClient/DiemHocSinhsClient/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            QLGiaoVien qLGiaoVien = db.GiaoViens.Find(id);
-            db.GiaoViens.Remove(qLGiaoVien);
+            DiemHocSinh diemHocSinh = db.DiemHocSinhs.Find(id);
+            db.HocSinhs.Remove(diemHocSinh);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

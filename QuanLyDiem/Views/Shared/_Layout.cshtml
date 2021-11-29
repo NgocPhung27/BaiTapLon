@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @*<title>@ViewBag.Title - My ASP.NET Application</title>*@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/ckeditor")
@@ -20,7 +20,7 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>*@
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                @*<ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Lớp ", "Index", "QLLops")</li>
                     <li>@Html.ActionLink("Môn Học", "Index", "QLMonHocs")</li>
                     <li>@Html.ActionLink("Điểm", "Index", "Diemhocsinhs")</li>
@@ -29,8 +29,11 @@
                     <li>@Html.ActionLink("Phân Quyền", "Index", "Roles")</li>
                     <li>@Html.ActionLink("Tạo Tài Khoản", "Register", "Accounts")</li>
                     <li>
-                </ul>
+                </ul>*@
                 <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/Home/Index" class="nav-link"> Trang Chủ </a>
+                    </li>
                     <li>
                         <a href="/Accounts/Login" class="nav-link">Đăng Nhập</a>
                     </li>

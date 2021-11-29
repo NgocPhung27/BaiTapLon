@@ -8,9 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using QuanLyDiem.Models;
 
-namespace QuanLyDiem.Controllers
-{ 
-    public class QLGiaoViensController : Controller
+namespace QuanLyDiem.Areas.Admins.Controllers
+{
+    public class QLGiaoViensAdminController : Controller
     {
         private QLDHSDbContext db = new QLDHSDbContext();
         AutoGenerateKey aukey = new AutoGenerateKey();
@@ -73,7 +73,7 @@ namespace QuanLyDiem.Controllers
             return View(gv);
         }
 
-        // GET: QLGiaoViens/Edit/5
+        // GET: Admins/QLGiaoViensAdmin/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -89,7 +89,7 @@ namespace QuanLyDiem.Controllers
             return View(qLGiaoVien);
         }
 
-        // POST: QLGiaoViens/Edit/5
+        // POST: Admins/QLGiaoViensAdmin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -106,7 +106,7 @@ namespace QuanLyDiem.Controllers
             return View(qLGiaoVien);
         }
 
-        // GET: QLGiaoViens/Delete/5
+        // GET: Admins/QLGiaoViensAdmin/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -121,7 +121,7 @@ namespace QuanLyDiem.Controllers
             return View(qLGiaoVien);
         }
 
-        // POST: QLGiaoViens/Delete/5
+        // POST: Admins/QLGiaoViensAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

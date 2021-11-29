@@ -1,0 +1,118 @@
+﻿@model IEnumerable<QuanLyDiem.Models.DiemHocSinh>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaHS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QLLop.TenLop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenHS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhHS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaMH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiemMieng)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diem15Phut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diem1Tiet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiemHK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiemTBHK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaHS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.QLLop.TenLop)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TenHS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GioiTinh)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgaySinh)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoDienThoai)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DiaChi)
+    </td>
+    <td>
+        @Html.Raw(item.AnhHS)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaMH)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DiemMieng)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Diem15Phut)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Diem1Tiet)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DiemHK)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DiemTBHK)
+    </td>
+    <td>
+        @Html.Raw(item.GhiChu)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.MaHS }) |
+        @Html.ActionLink("Details", "Details", new { id = item.MaHS }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.MaHS })
+    </td>
+</tr>
+}
+
+</table>

@@ -5,11 +5,8 @@
     Layout = "~/Areas/HSClient/Views/_LayoutClient.cshtml";
 }
 
-<h2>Index</h2>
+<h2>ĐIỂM HỌC SINH</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -108,9 +105,9 @@
         @Html.DisplayFor(modelItem => item.GhiChu)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.MaHS }) |
+  |
         @Html.ActionLink("Details", "Details", new { id = item.MaHS }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.MaHS })
+        
     </td>
 </tr>
 }

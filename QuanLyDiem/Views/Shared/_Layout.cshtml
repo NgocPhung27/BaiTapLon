@@ -7,48 +7,32 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/ckeditor")
+    <link href="~/Content/TaoThem.css" rel="stylesheet" />
 </head>
 <body>
     <div class="Tieude">
         <div class="container">
-            @*<div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>*@
+       
             <div class="navbar-collapse collapse">
-                @*<ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Lớp ", "Index", "QLLops")</li>
-                    <li>@Html.ActionLink("Môn Học", "Index", "QLMonHocs")</li>
-                    <li>@Html.ActionLink("Điểm", "Index", "Diemhocsinhs")</li>
-                    <li>@Html.ActionLink("Học Sinh", "Index", "QLHocSinhs")</li>
-                    <li>@Html.ActionLink("Giáo Viên", "Index", "QLGiaoViens")</li>
-                    <li>@Html.ActionLink("Phân Quyền", "Index", "Roles")</li>
-                    <li>@Html.ActionLink("Tạo Tài Khoản", "Register", "Accounts")</li>
-                    <li>
-                </ul>*@
+         
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="/Home/Index" class="nav-link"> Trang Chủ </a>
                     </li>
+                </ul>
+                <ul class="nav navbar-nav">
                     <li>
-                        <a href="/Accounts/Login" class="nav-link">Đăng Nhập</a>
-                    </li>
-                    <li>
-                        <a href="/Accounts/Logout" class="nav-link">Đăng Xuất</a>
+                            <a href="/Accounts/Login" class="nav-link">Đăng Nhập</a>
                     </li>
                 </ul>
-            </div>
+</div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year -Ngọc Hằng </p>
         </footer>
     </div>
 

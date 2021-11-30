@@ -10,7 +10,7 @@ using QuanLyDiem.Models;
 
 namespace QuanLyDiem.Areas.Admins.Controllers
 {
-    public class QLMonHocsController : Controller
+    public class QLMonHocsAdminController : Controller
     {
         private QLDHSDbContext db = new QLDHSDbContext();
         AutoGenerateKey aukey = new AutoGenerateKey();

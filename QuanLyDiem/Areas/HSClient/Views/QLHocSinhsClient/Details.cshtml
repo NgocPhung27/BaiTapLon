@@ -5,25 +5,25 @@
     Layout = "~/Areas/HSClient/Views/_LayoutClient.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Thông Tin Chi Tiết</h2>
 
 <div>
     <h4>QLHocSinh</h4>
     <hr />
     <dl class="dl-horizontal">
-        @*<dt>
-            @Html.DisplayNameFor(model => model.QLLop.TenLop)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.QLLop.TenLop)
-        </dd>*@
         <dt>
             @Html.DisplayNameFor(model => model.QLLop.TenLop)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.QLLop.TenLop)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaLop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaLop)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.TenHS)
@@ -77,5 +77,5 @@
 </div>
 <p>
 
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Quay Lại", "Index")
 </p>

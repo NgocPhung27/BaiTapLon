@@ -33,6 +33,6 @@ namespace QuanLyDiem.Models
         [Display(Name = "Mã Lớp")]
         public string MaLop { get; set; }
         public QLLop QLLop { get; set; }
-        public object QLMonHoc { get; internal set; }
+        /*public object QLMonHoc { get; internal set; }*/
     }
 }

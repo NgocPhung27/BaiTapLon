@@ -169,6 +169,7 @@
     <Compile Include="Models\AutoGenerateKey.cs" />
     <Compile Include="Models\DiemHocSinh.cs" />
     <Compile Include="Models\Encrytion.cs" />
+    <Compile Include="Models\ExcelProcess.cs" />
     <Compile Include="Models\QLDHSDbContext.cs" />
     <Compile Include="Models\QLGiaoVien.cs" />
     <Compile Include="Models\QLHocSinh.cs" />

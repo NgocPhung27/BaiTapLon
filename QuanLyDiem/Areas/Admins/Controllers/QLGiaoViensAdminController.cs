@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -14,6 +17,7 @@ namespace QuanLyDiem.Areas.Admins.Controllers
     {
         private QLDHSDbContext db = new QLDHSDbContext();
         AutoGenerateKey aukey = new AutoGenerateKey();
+        ExcelProcess ExcelPro = new ExcelProcess();
 
         // GET: QLGiaoViens
         public ActionResult Index()
@@ -140,5 +144,35 @@ namespace QuanLyDiem.Areas.Admins.Controllers
             }
             base.Dispose(disposing);
         }
+    private DataTable CopyDataFromExcelFile(HttpPostedFileBase file)
+    {
+        string fileExtention = file.FileName.Substring(file.FileName.IndexOf("."));
+        string _FileName = "Ten_File_Muon_Luu" + fileExtention;
+        string _path = Path.Combine(Server.MapPath("~/Upload/Excels"), _FileName);
+        file.SaveAs(_path);
+        DataTable dt = ExcelPro.ReadDataFromExcelFile(_path, false);
+        return dt;
     }
+    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["QLDHSDbContext"].ConnectionString);
+    private void OverwriteFastData(int? MaGV)
+    {
+        //dt là databasecos chứa dữ liệu để import vào database
+        DataTable dt = new DataTable();
+
+        //mapping các column trong database vào các column trong table ở CSDL
+        SqlBulkCopy bulkcopy = new SqlBulkCopy(con);
+        bulkcopy.DestinationTableName = "Giaoviens";
+        bulkcopy.ColumnMappings.Add("MaGV", "MaGV");
+        bulkcopy.ColumnMappings.Add("TenMH", "MaMH");
+        bulkcopy.ColumnMappings.Add("TenGV", "TenGV");
+        bulkcopy.ColumnMappings.Add("GioiTinh", "GioiTinh");
+        bulkcopy.ColumnMappings.Add("NgaySinh", "NgaySinh");
+        bulkcopy.ColumnMappings.Add("SoDienThoai", "SoDienThoai");
+        bulkcopy.ColumnMappings.Add("DiaChi", "DiaChi");
+        bulkcopy.ColumnMappings.Add("AnhGV", "AnhGV");
+            con.Open();
+        bulkcopy.WriteToServer(dt);
+        con.Close();
+    }
+}
 }

@@ -13,10 +13,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MaHS)
+            @Html.DisplayNameFor(model => model.QLLop.TenLop)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.QLLop.TenLop)
+            @Html.DisplayNameFor(model => model.MaHS)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TenHS)
@@ -37,7 +37,7 @@
             @Html.DisplayNameFor(model => model.AnhHS)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaMH)
+            @Html.DisplayNameFor(model => model.QLMonHoc.TenMH)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DiemMieng)
@@ -63,10 +63,10 @@
 @foreach (var item in Model) {
 <tr>
     <td>
-        @Html.DisplayFor(modelItem => item.MaHS)
+        @Html.DisplayFor(modelItem => item.QLLop.TenLop)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.QLLop.TenLop)
+        @Html.DisplayFor(modelItem => item.MaHS)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.TenHS)
@@ -88,6 +88,9 @@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.MaMH)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.QLMonHoc.TenMH)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.DiemMieng)

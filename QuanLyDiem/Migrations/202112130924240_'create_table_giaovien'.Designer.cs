@@ -6,14 +6,14 @@ namespace QuanLyDiem.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class qldhs : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class create_table_giaovien : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(qldhs));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(create_table_giaovien));
         
         string IMigrationMetadata.Id
         {
-            get { return "202111281520534_qldhs"; }
+            get { return "202112130924240_'create_table_giaovien'"; }
         }
         
         string IMigrationMetadata.Source

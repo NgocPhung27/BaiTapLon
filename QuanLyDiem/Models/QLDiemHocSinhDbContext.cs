@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace QuanLyDiem.Models
 {
-    public partial class QLDHSDbContext : DbContext
+    public partial class QLDiemHocSinhDbContext : DbContext
     {
-        public QLDHSDbContext()
-            : base("name=QLDHSDbContext")
+        public QLDiemHocSinhDbContext()
+            : base("name=QLDiemHocSinhDbContext")
         {
         }
         public virtual DbSet<QLGiaoVien> GiaoViens { get; set; }

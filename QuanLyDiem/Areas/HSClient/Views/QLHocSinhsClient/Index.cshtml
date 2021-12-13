@@ -22,7 +22,19 @@
         <th>
             @Html.DisplayNameFor(model => model.GioiTinh)
         </th>
-        
+        <th>
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnhHS)
+        </th>
+
         <th></th>
     </tr>
 
@@ -40,10 +52,20 @@
     <td>
         @Html.DisplayFor(modelItem => item.GioiTinh)
     </td>
- 
-
     <td>
-   |
+        @Html.DisplayFor(modelItem => item.NgaySinh)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoDienThoai)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DiaChi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AnhHS)
+    </td>
+    <td>
+        |
         @Html.ActionLink("Chi Tiết", "Details", new { id = item.MaHS }) |
 
     </td>

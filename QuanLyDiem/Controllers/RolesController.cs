@@ -12,7 +12,7 @@ namespace QuanLyDiem.Controllers
 {
     public class RolesController : Controller
     {
-        private QLDHSDbContext db = new QLDHSDbContext();
+        private QLDiemHocSinhDbContext db = new QLDiemHocSinhDbContext();
 
         // GET: Roles
         public ActionResult Index()

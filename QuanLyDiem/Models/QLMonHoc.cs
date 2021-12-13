@@ -23,6 +23,5 @@ namespace QuanLyDiem.Models
         [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
         public ICollection<DiemHocSinh> DiemHocSinhs { get; set; }
-        public ICollection<QLMonHoc> MonHocs { get; set; }
     }
 }

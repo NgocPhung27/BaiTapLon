@@ -12,7 +12,7 @@ namespace QuanLyDiem.Areas.Admins.Controllers
 {
     public class DiemHocSinhsAdminController : Controller
     {
-        private QLDHSDbContext db = new QLDHSDbContext();
+        private QLDiemHocSinhDbContext db = new QLDiemHocSinhDbContext();
         AutoGenerateKey aukey = new AutoGenerateKey();
 
         // GET: DiemHocSinhs
@@ -51,6 +51,7 @@ namespace QuanLyDiem.Areas.Admins.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaHS,TenHS,GioiTinh,NgaySinh,SoDienThoai,DiaChi,AnhHS,MaLop,MaMH,DiemMieng,Diem15Phut,Diem1Tiet,DiemHK,DiemTBHK,GhiChu")] DiemHocSinh dhs)
         {
+            //dhs.DiemTBHK = ((((dhs.DiemMieng+ dhs.Diem15Phut)*2* dhs.Diem1Tiet)/4)*2 + dhs.DiemHK)/3;
             var countHS = db.HocSinhs.Count();
             if (countHS == 0)
             {
@@ -63,11 +64,11 @@ namespace QuanLyDiem.Areas.Admins.Controllers
                 //sinh MaHS tự dộng
                 dhs.MaHS = aukey.GenerateKey(MaHS);
             }
+            dhs.DiemTBHK = Math.Round((dhs.DiemMieng + dhs.Diem15Phut +  2 * dhs.Diem1Tiet + dhs.DiemHK * 3) / 7,2);
             //luu thông tin vao database
             db.HocSinhs.Add(dhs);
             db.SaveChanges();
             return RedirectToAction("Index");
-
             ViewBag.MaLop = new SelectList(db.Lops, "MaLop", "TenLop", dhs.MaLop);
             ViewBag.MaMH = new SelectList(db.MonHocs, "MaMH", "TenMH", dhs.MaMH);
             return View(dhs);

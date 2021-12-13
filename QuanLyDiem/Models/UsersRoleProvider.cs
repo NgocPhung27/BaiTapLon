@@ -38,7 +38,7 @@ namespace QuanLyDiem.Models
 
         public override string[] GetRolesForUser(string username)
         {
-            using (QLDHSDbContext db = new QLDHSDbContext())
+            using (QLDiemHocSinhDbContext db = new QLDiemHocSinhDbContext())
             {
                 var userRoles = (from user in db.Accounts
                                  join role in db.Roles

@@ -10,7 +10,7 @@ namespace QuanLyDiem.Controllers
 {
     public class AccountsController : Controller
     {
-        QLDHSDbContext db = new QLDHSDbContext();
+        QLDiemHocSinhDbContext db = new QLDiemHocSinhDbContext();
         Encrytion enc = new Encrytion();
         StringProcess strPro = new StringProcess();
 
@@ -45,7 +45,7 @@ namespace QuanLyDiem.Controllers
                 if (!string.IsNullOrEmpty(acc.UseName) && !string.IsNullOrEmpty(acc.PassWord))
                 {
 
-                    using (var db = new QLDHSDbContext())
+                    using (var db = new QLDiemHocSinhDbContext())
 
                     {
                         var passToMD5 = strPro.GetMD5(acc.PassWord);
@@ -124,7 +124,7 @@ namespace QuanLyDiem.Controllers
 
         private int CheckSession()
         {
-            using (var db = new QLDHSDbContext())
+            using (var db = new QLDiemHocSinhDbContext())
             {
                 var user = HttpContext.Session["idUser"];
                 if (user != null)

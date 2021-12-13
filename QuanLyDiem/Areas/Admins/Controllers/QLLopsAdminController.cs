@@ -12,7 +12,7 @@ namespace QuanLyDiem.Areas.Admins.Controllers
 {
     public class QLLopsAdminController : Controller
     {
-        private QLDHSDbContext db = new QLDHSDbContext();
+        private QLDiemHocSinhDbContext db = new QLDiemHocSinhDbContext();
         AutoGenerateKey aukey = new AutoGenerateKey();
 
         // GET: QLLops

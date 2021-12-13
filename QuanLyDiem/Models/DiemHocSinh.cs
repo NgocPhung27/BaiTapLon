@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace QuanLyDiem.Models
 {
@@ -13,18 +14,25 @@ namespace QuanLyDiem.Models
 
         [Display(Name = "Mã môn học")]
         public string MaMH { get; set; }
-        public QLMonHoc QLMonHoc { get; set; }
+        [ForeignKey("MaMH")]
+        public virtual QLMonHoc QLMonHoc { get; set; }
+
+        //[Display(Name = "Mã môn học")]
+        //public string MaMH { get; set; }
+        //public QLMonHoc QLMonHoc { get; set; }
 
         [Display(Name = "Điểm miệng")]
-        public string DiemMieng { get; set; }
+
+        public double DiemMieng { get; set; }
         [Display(Name = "Điểm 15 phút")]
-        public string Diem15Phut { get; set; }
+        public double Diem15Phut { get; set; }
         [Display(Name = "Điểm 1 tiết")]
-        public string Diem1Tiet { get; set; }
+        public double Diem1Tiet { get; set; }
         [Display(Name = "Điểm học kỳ")]
-        public string DiemHK { get; set; }
+        public double DiemHK { get; set; }
         [Display(Name = "Điểm TB học kỳ")]
-        public string DiemTBHK { get; set; }
+        public double DiemTBHK { get; set; }
+        [AllowHtml]
         [Display(Name = "Ghi chú")]
         public string GhiChu { get; set; }
 

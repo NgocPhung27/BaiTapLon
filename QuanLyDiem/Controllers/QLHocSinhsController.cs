@@ -12,7 +12,7 @@ namespace QuanLyDiem.Controllers
 {
     public class QLHocSinhsController : Controller
     {
-        private QLDHSDbContext db = new QLDHSDbContext();
+        private QLDiemHocSinhDbContext db = new QLDiemHocSinhDbContext();
         AutoGenerateKey aukey = new AutoGenerateKey();
 
         // GET: QLHocSinhs

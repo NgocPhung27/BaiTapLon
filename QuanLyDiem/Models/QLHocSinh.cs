@@ -30,9 +30,15 @@ namespace QuanLyDiem.Models
         [Display(Name = "Ảnh học sinh")]
         public string AnhHS { get; set; }
 
+
         [Display(Name = "Mã Lớp")]
         public string MaLop { get; set; }
-        public QLLop QLLop { get; set; }
+        [ForeignKey("MaLop")]
+        public virtual QLLop QLLop { get; set; }
+
+        //[Display(Name = "Mã Lớp")]
+        //public string MaLop { get; set; }
+        //public QLLop QLLop { get; set; }
         /*public object QLMonHoc { get; internal set; }*/
     }
 }

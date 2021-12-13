@@ -9,7 +9,7 @@ namespace QuanLyDiem.Areas.Admins.Controllers
 {
     public class AccountAdminController : Controller
     {
-        QLDHSDbContext db = new QLDHSDbContext();
+        QLDiemHocSinhDbContext db = new QLDiemHocSinhDbContext();
         Encrytion enc = new Encrytion();
 
         // GET: Admins/AccountAdmin
